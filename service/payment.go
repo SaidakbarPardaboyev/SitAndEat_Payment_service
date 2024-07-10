@@ -18,7 +18,7 @@ func NewPaymentServiceRepo(db *sql.DB) *NewPaymentService {
 }
 
 func (P *NewPaymentService) CreatePayments(ctx context.Context, req *pb.CreatePayment) (*pb.Status, error) {
-	resp, err := postgres.CreatePayments(req)
+	resp, err := P.Payment.CreatePayments(req)
 	if err != nil {
 		log.Fatalf("Payment create error: %v", err)
 		return nil, err
@@ -27,7 +27,7 @@ func (P *NewPaymentService) CreatePayments(ctx context.Context, req *pb.CreatePa
 }
 
 func (P *NewPaymentService) GetByIdPayments(ctx context.Context, req *pb.GetById) (*pb.GetByIdResponse, error) {
-	resp, err := postgres.GetByIdPayments(req)
+	resp, err := P.Payment.GetPaymentStatusById(req)
 	if err != nil {
 		log.Fatalf("Read payment error: %v", err)
 		return nil, err
@@ -36,7 +36,7 @@ func (P *NewPaymentService) GetByIdPayments(ctx context.Context, req *pb.GetById
 }
 
 func (P *NewPaymentService) UpdatePayments(ctx context.Context, req *pb.UpdatePayment) (*pb.Status, error) {
-	resp, err := postgres.UpdatePayments(req)
+	resp, err := P.Payment.UpdatePayments(req)
 	if err != nil {
 		log.Fatalf("Update payment error: %v", err)
 		return nil, err
