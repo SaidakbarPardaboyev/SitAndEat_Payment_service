@@ -5,11 +5,12 @@ import (
 	"database/sql"
 	"log"
 	pb "payments/genproto/payment"
+	"payments/storage/postgres"
 )
 
 type NewPaymentService struct {
 	pb.UnimplementedPaymentServer
-	Payment *postgres.NewPayment
+	Payment *postgres.PaymentRepo
 }
 
 func NewPaymentServiceRepo(db *sql.DB) *NewPaymentService {
