@@ -43,7 +43,8 @@ func (p *PaymentRepo) GetPaymentStatusById(req *pb.GetById) (*pb.GetByIdResponse
 		from 
 			Payments 
 		where 
-			id=$1
+			id=$1 and 
+			deleted_at is null
 	`
 	err := p.db.QueryRow(query, req.Id).Scan(&resp.Paymentstatus)
 	if err != nil {
