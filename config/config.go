@@ -22,7 +22,7 @@ type Config struct {
 }
 
 func Load() Config {
-	if err := godotenv.Load("/home/azizbek/github/Restaurant/SitAndEat_Payment_service/.env"); err != nil {
+	if err := godotenv.Load(".env"); err != nil {
 		log.Print("No .env file found")
 	}
 
