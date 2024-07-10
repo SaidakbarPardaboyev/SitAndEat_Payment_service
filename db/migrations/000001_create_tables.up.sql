@@ -2,7 +2,7 @@ CREATE TYPE status AS ENUM ('COMPLETED', 'FAILED', 'PENDING');
 
 CREATE TABLE IF NOT EXISTS payments (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-    reservation_id uuid REFERENCES reservations(id),
+    reservation_id uuid NOT NULL,
     amount decimal,
     payment_method VARCHAR,
     payment_status status,
