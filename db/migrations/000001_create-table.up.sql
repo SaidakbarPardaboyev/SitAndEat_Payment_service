@@ -1,7 +1,6 @@
-CREATE TYPE IF NOT EXISTS Stat AS ENUM ('rejected', 'confirmed', 'active');
+CREATE TYPE IF NOT EXISTS Stat AS ENUM ('paid', 'notpaid');
 
 CREATE TYPE IF NOT EXISTS Method AS ENUM ('cash', 'card');
-
 
 CREATE TABLE IF NOT EXISTS Payments(
     id uuid PRIMARY KEY default gen_random_uuid(), 
